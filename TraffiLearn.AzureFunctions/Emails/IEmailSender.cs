@@ -1,7 +1,7 @@
 ﻿namespace TraffiLearn.AzureFunctions.Emails
 {
-    internal interface IEmailSender
+    public interface IEmailSender
     {
-        Task SendEmailAsync(string to, string subject, string body);
+        Task SendEmailAsync(SendEmailRequest request);
     }
 }

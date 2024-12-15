@@ -1,7 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
-namespace TraffiLearn.AzureFunctions
+namespace TraffiLearn.AzureFunctions.Emails
 {
     public sealed class Functions
     {
@@ -14,7 +14,7 @@ namespace TraffiLearn.AzureFunctions
 
         [Function(name: "EmailSendingFunction")]
         public void Run(
-            [RabbitMQTrigger("traffilearn-queue", ConnectionStringSetting = "RabbitMqConnectionString")] 
+            [RabbitMQTrigger("traffilearn-queue", ConnectionStringSetting = "RabbitMqConnectionString")]
             string myQueueItem)
         {
             _logger.LogInformation($"C# Queue trigger function processed: {myQueueItem}");

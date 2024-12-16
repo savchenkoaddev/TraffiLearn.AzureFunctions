@@ -19,14 +19,23 @@ namespace TraffiLearn.AzureFunctions.Emails
 
         [Function(name: "EmailSendingFunction")]
         public async Task Run(
-            [RabbitMQTrigger("traffilearn-queue", ConnectionStringSetting = "RabbitMqConnectionString")]
+            [RabbitMQTrigger("traffilearn-emails-queue", ConnectionStringSetting = "RabbitMqConnectionString")]
             string myQueueItem)
         {
             _logger.LogDebug($"Processing message from queue.");
 
             try
             {
-                var sendEmailRequest = JsonConvert.DeserializeObject<SendEmailRequest>(myQueueItem);
+                var envelope = JsonConvert.DeserializeObject<MessageEnvelope<SendEmailRequest>>(myQueueItem);
+
+                var sendEmailRequest = envelope?.Message;
+
+                if (sendEmailRequest is null)
+                {
+                    _logger.LogError("Message deserialization failed. The envelope does not contain a valid message.");
+
+                    return;
+                }
 
                 await _emailSender.SendEmailAsync(sendEmailRequest);
             }

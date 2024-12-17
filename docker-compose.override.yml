@@ -1,0 +1,4 @@
+services:
+  traffilearn.azurefunctions:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

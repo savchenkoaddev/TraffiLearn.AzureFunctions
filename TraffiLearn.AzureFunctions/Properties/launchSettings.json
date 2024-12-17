@@ -2,8 +2,14 @@
   "profiles": {
     "TraffiLearn.AzureFunctions": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7229",
-      "launchBrowser": false
+      "commandLineArgs": "--port 7229"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "DockerfileRunArguments": "--init",
+      "httpPort": 33405,
+      "useSSL": false
     }
   }
 }

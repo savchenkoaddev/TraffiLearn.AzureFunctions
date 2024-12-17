@@ -1,0 +1,21 @@
+services:
+  traffilearn.azurefunctions:
+    image: ${DOCKER_REGISTRY-}traffilearnazurefunctions
+    container_name: traffilearn.azurefunctions
+    build:
+      context: .
+      dockerfile: TraffiLearn.AzureFunctions/Dockerfile
+    environment:
+      - RabbitMqConnectionString=amqp://guest:guest@traffilearn-queue:5672/
+      - SmtpClientSettings:Host=mailhog
+      - SmtpClientSettings:Port=1025
+      - SmtpClientSettings:Username=traffilearn-dummy@dummy
+      - SmtpClientSettings:Password=
+      - SmtpClientSettings:EnableSsl=false
+    networks:
+      - traffilearn-network
+
+networks:
+  traffilearn-network:
+    external: 
+      name: traffilearn_network

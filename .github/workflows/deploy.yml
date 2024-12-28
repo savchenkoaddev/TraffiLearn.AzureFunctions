@@ -42,7 +42,7 @@ jobs:
         name: functionapp
         path: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
     - name: Deploy to Azure Function App
-      uses: Azure/functions-action@v1
+      uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         publish-profile: ${{ secrets.traffilearn_emails_0CED }}

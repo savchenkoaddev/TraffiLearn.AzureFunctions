@@ -8,7 +8,7 @@ env:
   AZURE_FUNCTIONAPP_NAME: traffilearn-emails
   AZURE_FUNCTIONAPP_PACKAGE_PATH: TraffiLearn.AzureFunctions/published
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 6.0.x
+  DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: TraffiLearn.AzureFunctions
 
 jobs:

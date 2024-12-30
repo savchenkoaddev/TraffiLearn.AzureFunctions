@@ -19,7 +19,8 @@ namespace TraffiLearn.AzureFunctions.Emails
 
         [Function(name: "EmailSendingFunction")]
         public async Task Run(
-            [RabbitMQTrigger("traffilearn-emails-queue", ConnectionStringSetting = "RabbitMqConnectionString")]
+            [ServiceBusTrigger(
+                queueName: "traffilearn-emails-queue", Connection = "ServiceBusConnectionString")]
             string myQueueItem)
         {
             _logger.LogDebug($"Processing message from queue.");

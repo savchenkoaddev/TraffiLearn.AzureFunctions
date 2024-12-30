@@ -6,7 +6,6 @@ services:
       context: .
       dockerfile: TraffiLearn.AzureFunctions/Dockerfile
     environment:
-      - RabbitMqConnectionString=amqp://guest:guest@traffilearn-queue:5672/
       - SmtpClientSettings:Host=mailhog
       - SmtpClientSettings:Port=1025
       - SmtpClientSettings:Username=traffilearn-dummy@dummy
